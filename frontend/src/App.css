@@ -1,0 +1,270 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', sans-serif;
+  background: #0b1120;
+  color: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, rgba(98, 132, 255, 0.24), transparent 30%),
+    linear-gradient(180deg, #081223 0%, #05080f 100%);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-body {
+  flex: 1;
+  padding: 24px;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.hero-card,
+.dashboard-grid,
+.paper-card,
+.editor-panel,
+.scoreboard {
+  background: rgba(18, 25, 48, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+.hero-card {
+  padding: 44px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.hero-card h1 {
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  margin: 0 0 16px;
+  letter-spacing: -0.05em;
+}
+
+.hero-card p {
+  font-size: 1.1rem;
+  color: #cfd8ff;
+  max-width: 680px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6fbbff 0%, #8c7bff 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.small-button {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+}
+
+.form-card {
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.form-field {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-field label {
+  font-size: 0.95rem;
+  color: #b8c1e4;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 12, 24, 0.9);
+  color: #eef2ff;
+  outline: none;
+}
+
+.problem-card.selected-problem {
+  border-color: rgba(111, 187, 255, 0.45);
+  background: rgba(111, 187, 255, 0.08);
+}
+
+.scoreboard table th,
+.scoreboard table td {
+  padding: 12px 14px;
+}
+
+@media (max-width: 900px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 28px;
+}
+
+.paper-card {
+  padding: 24px;
+}
+
+.paper-card h2 {
+  margin-top: 0;
+}
+
+.navbar {
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 14, 28, 0.95);
+  z-index: 10;
+}
+
+.navbar a {
+  color: #e8edff;
+  text-decoration: none;
+  margin-left: 18px;
+  font-weight: 600;
+}
+
+.active-link {
+  color: #8c7bff;
+}
+
+.navbar-brand {
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.problem-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(111, 187, 255, 0.24);
+}
+
+.problem-card h3 {
+  margin: 0 0 10px;
+}
+
+.problem-card p {
+  margin: 0 0 16px;
+  color: #c3ccdf;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.badge.easy { background: rgba(72, 187, 120, 0.16); color: #74d58f; }
+.badge.medium { background: rgba(247, 173, 51, 0.15); color: #ffcf6b; }
+.badge.hard { background: rgba(239, 83, 80, 0.14); color: #ff8f8f; }
+
+.editor-panel {
+  padding: 20px;
+  display: grid;
+  gap: 18px;
+}
+
+.editor-panel textarea {
+  width: 100%;
+  min-height: 260px;
+  background: #081224;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e7ecff;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.98rem;
+  padding: 20px;
+  border-radius: 18px;
+  resize: vertical;
+}
+
+.scoreboard {
+  padding: 20px;
+}
+
+.scoreboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scoreboard th,
+.scoreboard td {
+  text-align: left;
+  padding: 12px 14px;
+}
+
+.scoreboard th {
+  color: #9cb7ff;
+  font-weight: 700;
+}
+
+.scoreboard tr:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-muted {
+  color: #9aa7c0;
+}
+
+@media (max-width: 720px) {
+  .hero-card {
+    padding: 28px;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
