@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 import Practice from './pages/Practice';
 import ContestLobby from './pages/ContestLobby';
 import ProblemSolve from './pages/ProblemSolve';
+import Home from './pages/Home';
 import TopBar from './components/TopBar';
 
 export default function App() {
