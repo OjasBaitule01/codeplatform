@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProblemCard from '../components/ProblemCard';
 
 const sampleProblems = [
@@ -33,7 +34,7 @@ export default function Home() {
       <section className="hero-card">
         <h1>Build the next competitive coding arena.</h1>
         <p>Admins create contests, students submit code in multiple languages, and live verdicts update instantly. Practice problems, leaderboards, and editorials come together in one polished React experience.</p>
-        <a className="btn-primary" href="/dashboard">Open Dashboard</a>
+        <Link className="btn-primary" to="/dashboard">Open Dashboard</Link>
       </section>
 
       <section className="paper-card" style={{ marginTop: '24px' }}>
