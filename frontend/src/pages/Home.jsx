@@ -9,12 +9,23 @@ const sampleProblems = [
 
 export default function Home() {
   const [contest, setContest] = useState({ title: '', description: '', startTime: '', endTime: '' });
+  const [problem, setProblem] = useState({ title: '', description: '', difficulty: 'Easy', tags: '' });
   const [createdContests, setCreatedContests] = useState([]);
+  const [createdProblems, setCreatedProblems] = useState([]);
 
   const handleCreateContest = () => {
     if (!contest.title || !contest.description || !contest.startTime || !contest.endTime) return;
     setCreatedContests([contest, ...createdContests]);
     setContest({ title: '', description: '', startTime: '', endTime: '' });
+  };
+
+  const handleCreateProblem = () => {
+    if (!problem.title || !problem.description) return;
+    setCreatedProblems([{
+      ...problem,
+      tags: problem.tags.split(',').map((tag) => tag.trim()).filter(Boolean)
+    }, ...createdProblems]);
+    setProblem({ title: '', description: '', difficulty: 'Easy', tags: '' });
   };
 
   return (
@@ -50,12 +61,52 @@ export default function Home() {
 
       {createdContests.length > 0 && (
         <section className="paper-card" style={{ marginTop: '24px' }}>
-          <h2>Created Contests</h2>
+          <h2>Recent Contests</h2>
           {createdContests.map((item, index) => (
             <div key={`${item.title}-${index}`} className="problem-card" style={{ marginBottom: '16px' }}>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               <div className="text-muted">{item.startTime} to {item.endTime}</div>
+            </div>
+          ))}
+        </section>
+      )}
+
+      <section className="paper-card" style={{ marginTop: '24px' }}>
+        <h2>Create Problem</h2>
+        <div className="form-field">
+          <label>Problem Title</label>
+          <input value={problem.title} onChange={(event) => setProblem({ ...problem, title: event.target.value })} placeholder="Enter problem title" />
+        </div>
+        <div className="form-field">
+          <label>Description</label>
+          <textarea value={problem.description} onChange={(event) => setProblem({ ...problem, description: event.target.value })} placeholder="Enter problem description" />
+        </div>
+        <div className="form-row">
+          <div className="form-field">
+            <label>Difficulty</label>
+            <select value={problem.difficulty} onChange={(event) => setProblem({ ...problem, difficulty: event.target.value })}>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
+          </div>
+          <div className="form-field">
+            <label>Tags</label>
+            <input value={problem.tags} onChange={(event) => setProblem({ ...problem, tags: event.target.value })} placeholder="arrays, dp" />
+          </div>
+        </div>
+        <button className="btn-primary" onClick={handleCreateProblem}>Add Problem</button>
+      </section>
+
+      {createdProblems.length > 0 && (
+        <section className="paper-card" style={{ marginTop: '24px' }}>
+          <h2>Recent Problems</h2>
+          {createdProblems.map((item, index) => (
+            <div key={`${item.title}-${index}`} className="problem-card" style={{ marginBottom: '16px' }}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <div className="text-muted">{item.difficulty} • {item.tags.join(', ')}</div>
             </div>
           ))}
         </section>
